@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поддержка - StalDayz</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-rust: #8B4513;
+            --dark-rust: #654321;
+            --light-rust: #A0522D;
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --text-light: #e0e0e0;
+            --text-rust: #CD853F;
+            --accent-orange: #FF8C00;
+            --discord-blue: #5865F2;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 50%, var(--bg-darker) 100%);
+            background-attachment: fixed;
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 25% 25%, var(--primary-rust) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, var(--light-rust) 1px, transparent 1px);
+            background-size: 100px 100px, 150px 150px;
+            animation: grain-move 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes grain-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100px, -100px); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-rust);
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-rust), transparent);
+            animation: rust-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes rust-glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .support-section {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--dark-rust);
+            border-radius: 8px;
+            padding: 40px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .support-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-rust), transparent);
+        }
+
+        .support-section:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-rust);
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-rust);
+            margin-bottom: 25px;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-card {
+            background: rgba(88, 101, 242, 0.1);
+            border: 1px solid var(--discord-blue);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .discord-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--discord-blue), #4752c4);
+            color: white;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--discord-blue);
+            position: relative;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .discord-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .discord-btn:hover::before {
+            left: 100%;
+        }
+
+        .discord-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(88, 101, 242, 0.3);
+            background: linear-gradient(135deg, #4752c4, #3c45a3);
+        }
+
+        .faq-item {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--primary-rust);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(139, 69, 19, 0.1);
+            border-left-color: var(--light-rust);
+        }
+
+        .faq-question {
+            color: var(--accent-orange);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .faq-answer {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-list li {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border-left: 3px solid var(--primary-rust);
+            transition: all 0.3s ease;
+        }
+
+        .info-list li:hover {
+            background: rgba(139, 69, 19, 0.1);
+            border-left-color: var(--light-rust);
+        }
+
+        .info-list li::before {
+            content: "→";
+            color: var(--accent-orange);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-rust), var(--dark-rust));
+            color: white;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--primary-rust);
+            position: relative;
+            overflow: hidden;
+            margin-top: 40px;
+        }
+
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .back-button:hover::before {
+            left: 100%;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(139, 69, 19, 0.3);
+            border-color: var(--light-rust);
+        }
+
+        .navigation {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--dark-rust);
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+
+            .support-section {
+                padding: 25px 20px;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain-overlay"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="page-title">Поддержка</h1>
+        </div>
+
+        <div class="contact-card">
+            <h2 class="section-title">📡 Связь с администрацией</h2>
+            <p>Основной канал связи с командой проекта</p>
+            <a href="https://discord.gg/Pd7sPSJ2dk" class="discord-btn" target="_blank">
+                Присоединиться к Discord
+            </a>
+        </div>
+
+        <div class="support-section">
+            <h2 class="section-title">❓ Частые вопросы</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: Как подключиться к серверу?</div>
+                <div class="faq-answer">A: Используйте IP адрес айпи да на версии Minecraft 1.21.4</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Обязательно ли использовать лаунчер?</div>
+                <div class="faq-answer">A: Да, без него вход будет не возможен</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Можно ли играть с друзьями?</div>
+                <div class="faq-answer">A: Да, создавайте группировки и выживайте в постапокалиптическом мире вместе</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Что делать при технических проблемах?</div>
+                <div class="faq-answer">A: Обратитесь за помощью в Discord сервер или следуйте инструкциям в разделе технической поддержки</div>
+            </div>
+        </div>
+
+        <div class="support-section">
+            <h2 class="section-title">🔧 Техническая поддержка</h2>
+            
+            <p style="margin-bottom: 20px;">При возникновении технических проблем выполните следующие действия:</p>
+            
+            <ul class="info-list">
+                <li>Убедитесь, что используете Minecraft версии 1.21.4</li>
+                <li>Проверьте стабильность интернет-соединения</li>
+                <li>Перезапустите игровой клиент</li>
+                <li>Очистите кэш лаунчера</li>
+                <li>Обратитесь в Discord за дополнительной помощью</li>
+            </ul>
+        </div>
+
+        <div class="support-section">
+            <h2 class="section-title">📋 Жалобы и предложения</h2>
+            
+            <p style="margin-bottom: 20px;">Для подачи жалоб или предложений обращайтесь к администрации в Discord. Укажите:</p>
+            
+            <ul class="info-list">
+                <li>Ваш игровой никнейм</li>
+                <li>Подробное описание проблемы или предложения</li>
+                <li>Доказательства (скриншоты, видеозаписи)</li>
+                <li>Дату и время происшествия</li>
+                <li>Никнеймы других участников (при необходимости)</li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <a href="index.html" class="back-button">← Вернуться на главную</a>
+        </div>
+    </div>
+
+    <script>
+        // Плавная анимация появления элементов
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Анимация для секций поддержки
+        document.querySelectorAll('.support-section, .contact-card').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Эффект для кнопок
+        document.querySelectorAll('.discord-btn, .back-button').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.filter = 'brightness(1.1)';
+            });
+
+            btn.addEventListener('mouseleave', function() {
+                this.style.filter = 'brightness(1)';
+            });
+        });
+    </script>
+</body>
+</html>
