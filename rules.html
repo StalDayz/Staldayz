@@ -255,12 +255,12 @@
 
     <div class="container">
         <div class="header">
-            <h1 class="page-title">Правила Зоны</h1>
+            <h1 class="page-title">Правила Staldayz</h1>
         </div>
 
         <div class="warning-card">
-            <div class="warning-title">⚠️ ВНИМАНИЕ ⚠️</div>
-            <p>Нарушение правил влечет за собой исключение из Зоны. Незнание правил не освобождает от ответственности.</p>
+            <div class="warning-title"> ВНИМАНИЕ </div>
+            <p>Нарушение правил влечет за собой исключение из Staldayz. Незнание правил не освобождает от ответственности.</p>
         </div>
 
         <div class="rules-section">
@@ -311,7 +311,6 @@
     </div>
 
     <script>
-        // Плавная анимация появления элементов
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -326,7 +325,7 @@
             });
         }, observerOptions);
 
-        // Анимация для секций правил
+        // Анимка для селекции
         document.querySelectorAll('.rules-section').forEach(section => {
             section.style.opacity = '0';
             section.style.transform = 'translateY(30px)';
@@ -334,7 +333,6 @@
             observer.observe(section);
         });
 
-        // Эффект для кнопок
         document.querySelectorAll('.back-button').forEach(btn => {
             btn.addEventListener('mouseenter', function() {
                 this.style.filter = 'brightness(1.1)';
