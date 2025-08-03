@@ -370,7 +370,6 @@
     </div>
 
     <script>
-        // Плавная анимация появления элементов при прокрутке
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -385,7 +384,6 @@
             });
         }, observerOptions);
 
-        // Наблюдаем за карточками контента
         document.querySelectorAll('.content-card').forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
@@ -393,7 +391,6 @@
             observer.observe(card);
         });
 
-        // Эффект для кнопок
         document.querySelectorAll('.download-btn, .nav-btn, .discord-btn').forEach(btn => {
             btn.addEventListener('mouseenter', function() {
                 this.style.filter = 'brightness(1.1)';
@@ -404,7 +401,6 @@
             });
         });
 
-        // Плавная прокрутка для якорных ссылок
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
