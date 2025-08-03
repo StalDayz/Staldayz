@@ -316,7 +316,7 @@
             
             <div class="faq-item">
                 <div class="faq-question">Q: Как подключиться к серверу?</div>
-                <div class="faq-answer">A: Используйте IP адрес айпи да на версии Minecraft 1.21.4</div>
+                <div class="faq-answer">A: Используйте лаунчер для подключения</div>
             </div>
 
             <div class="faq-item">
@@ -341,9 +341,8 @@
             <p style="margin-bottom: 20px;">При возникновении технических проблем выполните следующие действия:</p>
             
             <ul class="info-list">
-                <li>Убедитесь, что используете Minecraft версии 1.21.4</li>
                 <li>Проверьте стабильность интернет-соединения</li>
-                <li>Перезапустите игровой клиент</li>
+                <li>Перезапустите лаунчер</li>
                 <li>Очистите кэш лаунчера</li>
                 <li>Обратитесь в Discord за дополнительной помощью</li>
             </ul>
@@ -369,7 +368,6 @@
     </div>
 
     <script>
-        // Плавная анимация появления элементов
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -384,15 +382,13 @@
             });
         }, observerOptions);
 
-        // Анимация для секций поддержки
         document.querySelectorAll('.support-section, .contact-card').forEach(section => {
             section.style.opacity = '0';
             section.style.transform = 'translateY(30px)';
             section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(section);
         });
-
-        // Эффект для кнопок
+        
         document.querySelectorAll('.discord-btn, .back-button').forEach(btn => {
             btn.addEventListener('mouseenter', function() {
                 this.style.filter = 'brightness(1.1)';
